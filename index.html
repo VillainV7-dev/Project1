@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Tes</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #9BA8AB, #253745);
+      height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+
+    .kotak {
+      width: 45px;
+      height: 25px;
+      background: linear-gradient(to bottom, #CCD0CF, #9BA8AB);
+      border-radius: 50px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      transition: 
+        transform 0.5s linear,
+        top 0.5s linear,
+        left 0.5s linear,
+        width 0.5s ease,
+        height 0.5s ease,
+        border-radius 0.5s ease;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .aktif {
+      width: 50px;
+      height: 50px;
+      transform: translate(50vw, 50vh) scale(10);
+      border-radius: 25%;
+    }
+  </style>
+</head>
+<body>
+  <div class="kotak" id="kotak"></div>
+
+  <script>
+    const kotak = document.getElementById('kotak');
+
+    // Tambah class 'aktif' pas klik kotaknya
+    kotak.addEventListener('click', function (event) {
+      event.stopPropagation(); // supaya klik di kotak gak dianggap klik luar
+      kotak.classList.add('aktif');
+    });
+
+    // Klik di luar kotak → hapus class 'aktif'
+    document.addEventListener('click', function (e) {
+      if (!kotak.contains(e.target)) {
+        kotak.classList.remove('aktif');
+      }
+    });
+  </script>
+</body>
+</html>
